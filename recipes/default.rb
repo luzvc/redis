@@ -6,7 +6,7 @@
 #
 include_recipe "apt"
 
-service "redis" do
+service "redis-server" do
   supports restart: true
 end
 
@@ -16,5 +16,5 @@ template "/etc/redis/redis.conf" do
   source "redis.conf.erb"
   user "root"
   group "root"
-  notifies :restart, "service[redis]"
+  notifies :restart, "service[redis-server]"
 end
